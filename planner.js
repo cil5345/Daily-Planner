@@ -1,3 +1,4 @@
+console.clear();
 $(document).ready(function () {
     //current timer
     let timer = moment().format('MMMM Do YYYY, h:mm:ss a');
@@ -15,6 +16,19 @@ $(document).ready(function () {
     // ====================================================================
     let workHours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm"]
     // console.log(workTimeArr[1]);
+
+    var lastUserInput = JSON.parse(localStorage.getItem("inputValues"));
+    console.log("TCL: lastUser", lastUserInput, lastUserInput.input1)
+//   userInput1Span.textContent = lastUserInput.input1
+//   userInput2Span.textContent = lastUserInput.input2
+//   userInput3Span.textContent = lastUserInput.input3
+//   userInput4Span.textContent = lastUserInput.input4
+//   userInput5Span.textContent = lastUserInput.input5
+//   userInput6Span.textContent = lastUserInput.input6
+//   userInput7Span.textContent = lastUserInput.input7
+//   userInput8Span.textContent = lastUserInput.input8
+//   userInput9Span.textContent = lastUserInput.input9
+
     for (let i = 0; i < workHours.length; i++) {
         // console.log(workTimeArr[i]);
 
@@ -22,28 +36,16 @@ $(document).ready(function () {
         let hourCol = $("<div>");
         let titleCol = $("<input>");
         let buttonCol = $("<button>");
-       
-        
+
+
+       console.log(i+1, lastUserInput["input"+(i+1)])
+        titleCol.val(lastUserInput["input"+(i+1)])
         newRow.addClass("row");
         hourCol.addClass("col-sm-1");
         titleCol.addClass("col-sm-10 title-input");
         buttonCol.addClass("col-sm-1 my-save-button");
         titleCol.attr("id", "text-input-" + parseInt(workHours[i]));
 
-        console.log
-        
-       
-       
-    
-
-        
-
-
-
-     
-
-   
-      
         // ====================================================================
         //add addClass() function to  (titleCol) change background color to grey future green current and red past. 
         // console.log(moment());
@@ -108,7 +110,7 @@ $(document).ready(function () {
 
          console.log(t9.value)
     
-         let user = {
+         let inputValues = {
             input1: t9.value,
             input2: t10.value,
             input3: t11.value,
@@ -135,21 +137,11 @@ $(document).ready(function () {
         console.log(userInput1Span)
         console.log(userInput2Span)
         console.log($(this))
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("inputValues", JSON.stringify(inputValues));
 
         // var lastUser = JSON.parse(localStorage.getItem("user"));
 
-        var lastUser = JSON.parse(localStorage.getItem("user"));
-      userInput1Span.textContent = lastUser.input1
-      userInput2Span.textContent = lastUser.input2
-      userInput3Span.textContent = lastUser.input3
-      userInput4Span.textContent = lastUser.input4
-      userInput5Span.textContent = lastUser.input5
-      userInput6Span.textContent = lastUser.input6
-      userInput7Span.textContent = lastUser.input7
-      userInput8Span.textContent = lastUser.input8
-      userInput9Span.textContent = lastUser.input9
-
+      
     //     .text(lastUser.input2);
     //     .text(lastUser.input3);
     //     .text(lastUser.input4);
